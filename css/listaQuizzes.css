@@ -1,20 +1,62 @@
 nav {
     display: flex;
+    flex-direction: column;
 }
 ul {
     display: flex;
     flex-wrap: wrap;
     margin-top: 5px;
 }
-.todos-os-quizzes p {
-    display: inline-block;
-    width: 95vw;
+
+.seus-quizzes {
+    margin-top: 5px;
 }
+
+.sem-quizzes {
+    text-align: center;
+    width: 92vw;
+    height: 181px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border: dashed 1px #D4D4D4;
+    border-radius: 5px;
+}
+
+.sem-quizzes span {
+    color: #D4D4D4;
+    font-size: 20px;
+    margin: 0 60px;
+    line-height: 26.44px;
+}
+.criar-quizz {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+    height: 40px;
+    color: #EC362D;
+    border: dashed 1px #EC362D;
+    border-radius: 50px;
+}
+.todos-os-quizzes {
+    width: 92vw;
+    margin: 0 auto;
+}
+.todos-os-quizzes p {
+    font-size: 20px;
+    display: inline-block;
+    margin-top: 50px;
+    margin-bottom: 10px;
+}
+
 .todos-os-quizzes li {
     margin: 5px auto;
     background-image: url("../assets/simpson.jpg");
     background-size: 100%;
-    width: 95vw;
+    width: 100%;
     height: 181px;
     border-radius: 5px;
 }
