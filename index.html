@@ -20,14 +20,16 @@
 <body>
     <header><strong>BuzzQuizz</strong></header>
 
-    <nav>
+
+    <!-- LISTA DE QUIZZES -->
+    <main class="lista-quizzes escondido">
         <section class="seus-quizzes">
-            <div class="sem-quizzes ">
+            <div class="perfil-sem-quizzes ">
                 <span>Você não criou nenhum quizz ainda :(</span>
-                <div class="criar-quizz">Criar Quizz</div>
+                <div class="botao-criar-quizz">Criar Quizz</div>
             </div>
 
-            <div class="com-quizzes escondido">
+            <div class="perfil-com-quizzes escondido">
                 <div>
                     <p><strong>Seus Quizzes</strong></p>
                     <ion-icon name="add-circle"></ion-icon>
@@ -74,11 +76,27 @@
                 
             </ul>
         </section>
-    </nav>
+    </main>
 
+
+    <!--  PÁGINA DO QUIZZ  -->
     <div class="pagina-quizz escondido">
         
     </div>
+
+    <!--  TELA DE CRIAR QUIZZ  -->
+    <main class="criar-quizzes-comeco">   
+        <strong class="titulo-criar-quizz">Comece pelo começo</strong>
+
+        <ul>
+            <li><input type="text" placeholder="Título do seu quizz"></li>
+            <li><input type="text" placeholder="URL da imagem do seu quizz"></li>
+            <li><input type="text" placeholder="Quantidade de perguntas do quizz"></li>
+            <li><input type="text" placeholder="Quantidade de níveis do quizz"></li>
+        </ul>
+
+        <div class="botao-criacao-quizz"> <span>Prosseguir pra criar perguntas</span></div>
+    </main>
 
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

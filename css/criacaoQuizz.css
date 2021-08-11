@@ -1,5 +1,49 @@
+.criar-quizzes-comeco {
+    font-size: 20px;
+    background-color: #e5e5e5;
+    width: 100vw;
+    height: calc(100vh - 69px);
+}
+.titulo-criar-quizz {
+    margin: 40px auto 20px auto;
 
+}
+.criar-quizzes-comeco ul {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 256px;
+    padding: 20px 0 20px 0;
+}
 
+.criar-quizzes-comeco li input {
+    font-size: 19px;
+    width: 92vw;
+    height: 46px;
+    color: #d1d1d1;
+    font-style: italic;
+    margin: 0 auto;
+    border: 1px solid #d1d1d1;
+    border-radius: 5px;
+    padding-left: 15px;
+}
+.botao-criacao-quizz {
+    margin: 10px auto 0 auto;
+    color: white;
+    background-color: #EC362D;
+    height: 54px;
+    width: auto;
+    box-sizing: content-box;
+    padding: 0 30px 0 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    font-size: 18px;
+    margin-top: 20px;
+}
 
 
 

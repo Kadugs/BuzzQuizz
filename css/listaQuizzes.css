@@ -1,14 +1,11 @@
-nav {
-    display: flex;
-    flex-direction: column;
-}
-ul {
+.perfil-com-quizzes ul,
+.todos-os-quizzes ul {
     display: flex;
     flex-wrap: wrap;
     margin-top: 5px;
 }
 
-.sem-quizzes {
+.perfil-sem-quizzes {
     text-align: center;
     width: 92vw;
     height: 181px;
@@ -17,16 +14,16 @@ ul {
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    border: dashed 1px #D4D4D4;
+    border: dashed 1px #b9b9b9;
     border-radius: 5px;
 }
-.sem-quizzes span {
-    color: #D4D4D4;
+.perfil-sem-quizzes span {
+    color: #b9b9b9;
     font-size: 20px;
     margin: 0 60px;
     line-height: 26.44px;
 }
-.criar-quizz {
+.botao-criar-quizz {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -37,12 +34,12 @@ ul {
     border-radius: 50px;
 }
 
-.com-quizzes > div {
+.perfil-com-quizzes > div {
     display: flex;
     justify-content: space-between;
 }
 
-.com-quizzes ion-icon {
+.perfil-com-quizzes ion-icon {
     font-size: 30px;
     color: #EC362D;
 }
@@ -54,7 +51,7 @@ ul {
     margin-top: 20px;
 }
 .todos-os-quizzes p,
-.com-quizzes p {
+.perfil-com-quizzes p {
     font-size: 20px;
     display: inline-block;
     margin-bottom: 10px;
@@ -88,11 +85,11 @@ ul {
 
 @media (min-width: 1100px) {
 
-    .sem-quizzes span{
+    .perfil-sem-quizzes span{
         padding: 0 350px;
     }
 
-    .criar-quizz {
+    .botao-criar-quizz {
         width: 151px;
     }
 
