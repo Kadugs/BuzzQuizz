@@ -1,7 +1,9 @@
 body {
     font-family: 'Roboto', sans-serif;
 }
-
+strong {
+    font-weight: bold;
+}
 header{
     height: 54px;
     background-color: #EC362D;
