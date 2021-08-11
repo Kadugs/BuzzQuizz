@@ -37,7 +37,7 @@ ul {
     border-radius: 50px;
 }
 
-.com-quizzes div {
+.com-quizzes > div {
     display: flex;
     justify-content: space-between;
 }
@@ -51,7 +51,7 @@ ul {
 .seus-quizzes {
     width: 92vw;
     margin: 0 auto;
-    margin-top: 50px;
+    margin-top: 20px;
 }
 .todos-os-quizzes p,
 .com-quizzes p {
@@ -84,4 +84,21 @@ ul {
     color: white;
     bottom: 10px;
     left: 5px;
+}
+
+@media (min-width: 1100px) {
+
+    .sem-quizzes span{
+        padding: 0 350px;
+    }
+
+    .criar-quizz {
+        width: 151px;
+    }
+
+    .todos-os-quizzes li,
+    .seus-quizzes li {
+        width: 340px;
+        margin: 5px;
+    }
 }
