@@ -4,6 +4,15 @@ body {
 
 header{
     height: 54px;
+    width: 100vw;
     background-color: #EC362D;
     color: #ffffff;
+    font-size: 37px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    position: fixed;
+    top: 0;
+    left: 0;
 }
