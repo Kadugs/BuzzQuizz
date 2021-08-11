@@ -1,3 +1,6 @@
+*{
+    box-sizing: border-box;
+}
 body {
     font-family: 'Roboto', sans-serif;
 }
@@ -5,7 +8,7 @@ strong {
     font-weight: bold;
 }
 header{
-    height: 54px;
+    height: 69px;
     width: 100vw;
     background-color: #EC362D;
     color: #ffffff;
@@ -17,4 +20,7 @@ header{
     top: 0;
     left: 0;
     box-shadow: 0 0 0 3px rgba(0, 4, 4, 0.25);
+}
+.escondido{
+    /* display: none; */
 }
