@@ -22,14 +22,33 @@
 
     <nav>
         <section class="seus-quizzes">
-            <div class="sem-quizzes">
+            <div class="sem-quizzes escondido">
                 <span>Você não criou nenhum quizz ainda :(</span>
                 <div class="criar-quizz">Criar Quizz</div>
+            </div>
+
+            <div class="com-quizzes ">
+                <div>
+                    <p><strong>Seus Quizzes</strong></p>
+                    <ion-icon name="add-circle"></ion-icon>
+                </div>
+                <ul>
+                    <li>
+                        <div class="degrade">
+                            <span>Acerte os personagens corretos dos Simpsons e prove seu amor!</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="degrade">
+                            <span>Acerte os personagens corretos dos Simpsons e prove seu amor!</span>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </section>
 
         <section class="todos-os-quizzes">
-            <p class="titulo"><strong>Todos os quizzes</strong></p>
+            <p><strong>Todos os quizzes</strong></p>
             <ul>
                 <li>
                     <div class="degrade">
@@ -60,6 +79,8 @@
         
     </div>
 
-<script src="scripts.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="scripts.js"></script>
 </body>
 </html>

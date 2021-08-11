@@ -8,10 +8,6 @@ ul {
     margin-top: 5px;
 }
 
-.seus-quizzes {
-    margin-top: 5px;
-}
-
 .sem-quizzes {
     text-align: center;
     width: 92vw;
@@ -24,7 +20,6 @@ ul {
     border: dashed 1px #D4D4D4;
     border-radius: 5px;
 }
-
 .sem-quizzes span {
     color: #D4D4D4;
     font-size: 20px;
@@ -41,18 +36,32 @@ ul {
     border: dashed 1px #EC362D;
     border-radius: 50px;
 }
-.todos-os-quizzes {
+
+.com-quizzes div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.com-quizzes ion-icon {
+    font-size: 30px;
+    color: #EC362D;
+}
+
+.todos-os-quizzes ,
+.seus-quizzes {
     width: 92vw;
     margin: 0 auto;
+    margin-top: 50px;
 }
-.todos-os-quizzes p {
+.todos-os-quizzes p,
+.com-quizzes p {
     font-size: 20px;
     display: inline-block;
-    margin-top: 50px;
     margin-bottom: 10px;
 }
 
-.todos-os-quizzes li {
+.todos-os-quizzes li,
+.seus-quizzes li {
     margin: 5px auto;
     background-image: url("../assets/simpson.jpg");
     background-size: 100%;
@@ -68,7 +77,8 @@ ul {
     position: relative;
 }
 
-.todos-os-quizzes li span {
+.todos-os-quizzes li span,
+.seus-quizzes li span {
     position: absolute;
     margin: 0 5px;
     color: white;
