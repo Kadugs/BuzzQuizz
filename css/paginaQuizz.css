@@ -1,0 +1,7 @@
+.pagina-quizz{
+    display: flex;
+    flex-direction: column;
+    margin-top: 69px;
+    background-color: salmon;
+    height: 100vh;
+}
