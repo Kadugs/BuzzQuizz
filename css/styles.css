@@ -19,16 +19,3 @@ header{
     left: 0;
     box-shadow: 0 0 0 3px rgba(0, 4, 4, 0.25);
 }
-
-ul {
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: 5px;
-}
-
-li {
-    background-image: url("assets/simpson-1000x600.jpg");
-    width: 340px;
-    border-radius: 5px;
-    background: linear-gradient(black, rgba(82, 79, 79, 0));
-}
