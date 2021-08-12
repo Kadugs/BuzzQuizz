@@ -6,16 +6,18 @@ const telaCriarFinal = document.querySelector(".criar-quizz-final");
 let titulo;
 let imagem;
 
+const dadosComeco = document.querySelectorAll('.criar-quizz-comeco li input');
 function criarQuizzComeco() {
     listaQuizzes.classList.add('escondido');
     telaCriarComeco.classList.remove('escondido');
-}
-function criarQuizzPerguntas() {
-    let dadosComeco = document.querySelectorAll('.criar-quizz-comeco li input');
     titulo = dadosComeco[0].value;
     imagem = dadosComeco[1].value;
     const numPerguntas = Number(dadosComeco[2].value);
     const numNiveis = Number(dadosComeco[3].value);
+}
+function criarQuizzPerguntas() {
+
+    
     telaCriarComeco.classList.add('escondido');
     telaCriarPerguntas.classList.remove("escondido");
 }
