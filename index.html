@@ -165,7 +165,7 @@
 
         <!--  TELA DE CRIAR QUIZZ 2 -->
 
-    <main class="telas-criar-quizz criar-quizz-perguntas">
+    <main class="telas-criar-quizz criar-quizz-perguntas escondido">
         <strong class="titulo-criar-quizz">Crie suas perguntas</strong>
 
         <ul>
@@ -188,9 +188,14 @@
             <li><input type="text" placeholder="URL da imagem 3"></li>
         </ul>
 
-        <section>
+        <section class="adicionar-perguntas">
             <strong> Pergunta 2</strong>
-            
+            <ion-icon name="create-outline"></ion-icon>
+        </section>
+
+        <section class="adicionar-perguntas">
+            <strong> Pergunta 3</strong>
+            <ion-icon name="create-outline"></ion-icon>
         </section>
         
         <div class="botao-criacao-quizz"> <span>Prosseguir pra criar níveis</span></div>
@@ -199,7 +204,28 @@
 
         <!-- TELA DE CRIAR QUIZZ 3 -->
 
-    <main class="telas-criar-quizz criar-quizz-niveis escondido">
+    <main class="telas-criar-quizz criar-quizz-niveis">
+        <strong class="titulo-criar-quizz">Agora, decida os níveis</strong>
+
+        <ul>
+            <li class="subtitulo-criar-quizz">Nível 1</li>
+            <li><input type="text" placeholder="Título do nível"></li>
+            <li><input type="text" placeholder="% de acerto mínima"></li>
+            <li><input type="text" placeholder="URL da imagem do nível"></li>
+            <li><textarea placeholder="Descrição do nível"></textarea></li>
+        </ul>
+
+        <section class="adicionar-niveis">
+            <strong> Nível 2</strong>
+            <ion-icon name="create-outline"></ion-icon>
+        </section>
+
+        <section class="adicionar-niveis">
+            <strong> Nível 3</strong>
+            <ion-icon name="create-outline"></ion-icon>
+        </section>
+
+        <div class="botao-criacao-quizz"> <span>Finalizar Quizz</span></div>
 
     </main>
 
