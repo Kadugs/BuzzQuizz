@@ -3,7 +3,7 @@
 }
 body {
     font-family: 'Roboto', sans-serif;
-    margin-top: 80px;
+    margin-top: 69px;
 }
 strong {
     font-weight: bold;
@@ -23,5 +23,5 @@ header {
     box-shadow: 0 0 0 3px rgba(0, 4, 4, 0.25);
 }
 .escondido {
-    /*display: none;*/
+    display: none;
 }
