@@ -26,13 +26,13 @@
         <section class="seus-quizzes">
             <div class="perfil-sem-quizzes ">
                 <span>Você não criou nenhum quizz ainda :(</span>
-                <div class="botao-criar-quizz">Criar Quizz</div>
+                <div class="botao-criar-quizz" onclick="criarQuizzComeco()">Criar Quizz</div>
             </div>
 
             <div class="perfil-com-quizzes escondido">
                 <div>
                     <p><strong>Seus Quizzes</strong></p>
-                    <ion-icon name="add-circle"></ion-icon>
+                    <ion-icon name="add-circle" onclick="criarQuizzComeco()"></ion-icon>
                 </div>
                 <ul>
                     <li>
@@ -130,13 +130,13 @@
         <strong class="titulo-criar-quizz">Comece pelo começo</strong>
 
         <ul>
-            <li><input type="text" placeholder="Título do seu quizz"></li>
-            <li><input type="text" placeholder="URL da imagem do seu quizz"></li>
-            <li><input type="text" placeholder="Quantidade de perguntas do quizz"></li>
-            <li><input type="text" placeholder="Quantidade de níveis do quizz"></li>
+            <li><input type="text" placeholder="Título do seu quizz" required></li>
+            <li><input type="text" placeholder="URL da imagem do seu quizz" required></li>
+            <li><input type="text" placeholder="Quantidade de perguntas do quizz" required></li>
+            <li><input type="text" placeholder="Quantidade de níveis do quizz" required></li>
         </ul>
 
-        <div class="botao-criacao-quizz"> <span>Prosseguir pra criar perguntas</span></div>
+        <div class="botao-criacao-quizz" onclick="criarQuizzPerguntas();"> <span>Prosseguir pra criar perguntas</span></div>
     </main>
 
         <!--  TELA DE CRIAR QUIZZ 2 -->
@@ -146,22 +146,22 @@
 
         <ul>
             <li class="subtitulo-criar-quizz"><strong> Pergunta 1</strong></li>
-            <li><input type="text" placeholder="Texto da pergunta"></li>
-            <li><input type="text" placeholder="Cor de fundo da pergunta"></li>
+            <li><input type="text" placeholder="Texto da pergunta" required></li>
+            <li><input type="text" placeholder="Cor de fundo da pergunta" required></li>
 
             <li class="subtitulo-criar-quizz"><strong> Resposta correta</strong></li>
-            <li><input type="text" placeholder="Resposta correta"></li>
-            <li><input type="text" placeholder="URL da imagem"></li>
+            <li><input type="text" placeholder="Resposta correta" required></li>
+            <li><input type="text" placeholder="URL da imagem" required></li>
 
             <li class="subtitulo-criar-quizz"><strong> Respostas incorretas</strong></li>
-            <li><input type="text" placeholder="Resposta incorreta 1"></li>
-            <li class="respiro-li"><input type="text" placeholder="URL da imagem 1"></li>
+            <li><input type="text" placeholder="Resposta incorreta 1" required></li>
+            <li class="respiro-li"><input type="text" placeholder="URL da imagem 1" required></li>
 
-            <li><input type="text" placeholder="Resposta incorreta 2"></li>
-            <li class="respiro-li"><input type="text" placeholder="URL da imagem 2"></li>
+            <li><input type="text" placeholder="Resposta incorreta 2" required></li>
+            <li class="respiro-li"><input type="text" placeholder="URL da imagem 2" required></li>
 
-            <li><input type="text" placeholder="Resposta incorreta 3"></li>
-            <li><input type="text" placeholder="URL da imagem 3"></li>
+            <li><input type="text" placeholder="Resposta incorreta 3" required></li>
+            <li><input type="text" placeholder="URL da imagem 3" required></li>
         </ul>
 
         <section class="adicionar-perguntas">
@@ -174,7 +174,7 @@
             <ion-icon name="create-outline"></ion-icon>
         </section>
         
-        <div class="botao-criacao-quizz"> <span>Prosseguir pra criar níveis</span></div>
+        <div class="botao-criacao-quizz" onclick="criarQuizzNiveis();"> <span>Prosseguir pra criar níveis</span></div>
 
     </main>
 
@@ -185,10 +185,10 @@
 
         <ul>
             <li class="subtitulo-criar-quizz">Nível 1</li>
-            <li><input type="text" placeholder="Título do nível"></li>
-            <li><input type="text" placeholder="% de acerto mínima"></li>
-            <li><input type="text" placeholder="URL da imagem do nível"></li>
-            <li><textarea placeholder="Descrição do nível"></textarea></li>
+            <li><input type="text" placeholder="Título do nível" required></li>
+            <li><input type="text" placeholder="% de acerto mínima" required></li>
+            <li><input type="text" placeholder="URL da imagem do nível" required></li>
+            <li><textarea placeholder="Descrição do nível" required></textarea></li>
         </ul>
 
         <section class="adicionar-niveis">
@@ -201,7 +201,7 @@
             <ion-icon name="create-outline"></ion-icon>
         </section>
 
-        <div class="botao-criacao-quizz"> <span>Finalizar Quizz</span></div>
+        <div class="botao-criacao-quizz" onclick="criarQuizzFinal();"> <span>Finalizar Quizz</span></div>
 
     </main>
 
@@ -214,7 +214,7 @@
             </div>
         </section>
 
-        <div class="botao-criacao-quizz"> <span>Acessar Quizz</span></div>
+        <div class="botao-criacao-quizz" onclick="acessarQuizz();"> <span>Acessar Quizz</span></div>
         <span>Voltar pra home</span>
 
     </main>
