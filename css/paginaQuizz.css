@@ -22,7 +22,7 @@
 .pergunta-quizz-conteiner{
     margin: 24px 0;
     padding: 24px 0;
-    height: 436px;
+    /* height: 436px; */
     display: flex;
     flex-direction: column;
     align-items: center;    
@@ -50,6 +50,10 @@
 }
 .opcao-resposta{
     margin: 13px 0 5px 0;
+}
+.opcao-resposta p{
+    word-wrap: break-word;
+    width: 43vw;
 }
 
 .final-quizz-conteiner{

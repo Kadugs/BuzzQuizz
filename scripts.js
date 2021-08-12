@@ -30,8 +30,11 @@ function renderizarQuizzes(){
         quiz = quiz.nextElementSibling;
     }
 }
+
 let quizzEspecifico = {};
+
 // abre a paginaQuizz com o quizz selecionado respectivo
+
 function abrirQuizz(elemento, tituloQuizz){
     const listaQuizzes = document.querySelector(".lista-quizzes");
     listaQuizzes.classList.add("escondido");
@@ -47,6 +50,7 @@ function abrirQuizz(elemento, tituloQuizz){
     renderizarQuizz();
    
 }
+
 function renderizarQuizz(){
     const mudaTopo = document.querySelector(".pagina-quizz .topo-quizz");
    
@@ -66,5 +70,21 @@ function renderizarQuizz(){
                 </div>
             </li> 
         `;
+    }
+    let insereRespostas = document.querySelector(".pagina-quizz ul li");
+    
+    for(let i=0; i < quizzEspecifico.questions.length; i++){
+        const resposta = insereRespostas.lastElementChild;
+        resposta.innerHTML = ``;
+        const pergunta = quizzEspecifico.questions[i];
+        for(let j = 0; j<pergunta.answers.length; j++){
+            resposta.innerHTML += `
+                    <div class="opcao-resposta">
+                        <img src="${pergunta.answers[j].image}">
+                        <p>${pergunta.answers[j].text}</p>
+                    </div>
+            `;
+        }
+        insereRespostas = insereRespostas.nextElementSibling;
     }
 }
