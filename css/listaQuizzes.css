@@ -66,6 +66,10 @@
     height: 181px;
     border-radius: 5px;
 }
+.todos-os-quizzes li:active{
+    transform: scale(0.97);
+    transition: transform .4s;
+}
 
 @media (min-width: 1100px) {
 
