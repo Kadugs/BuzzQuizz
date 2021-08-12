@@ -1,11 +1,5 @@
 let todosQuizzes = {};
 
-const listaQuizzes = document.querySelector(".lista-quizzes");
-const telaCriarComeco = document.querySelector(".criar-quizz-comeco");
-const telaCriarPerguntas = document.querySelector(".criar-quizz-perguntas");
-const telaCriarNiveis = document.querySelector(".criar-quizz-niveis");
-const telaCriarFinal = document.querySelector(".criar-quizz-final");
-
 // leitura de quizzes no servidor
 function buscarQuizzes(){
     const promessa = axios.get('https://mock-api.bootcamp.respondeai.com.br/api/v3/buzzquizz/quizzes');
@@ -38,7 +32,9 @@ function renderizarQuizzes(){
 }
 
 let quizzEspecifico = {};
+
 // abre a paginaQuizz com o quizz selecionado respectivo
+
 function abrirQuizz(elemento, tituloQuizz){
     const listaQuizzes = document.querySelector(".lista-quizzes");
     listaQuizzes.classList.add("escondido");
@@ -54,6 +50,7 @@ function abrirQuizz(elemento, tituloQuizz){
     renderizarQuizz();
    
 }
+
 function renderizarQuizz(){
     const mudaTopo = document.querySelector(".pagina-quizz .topo-quizz");
    
@@ -74,58 +71,20 @@ function renderizarQuizz(){
             </li> 
         `;
     }
-}
-
-let titulo;
-let imagem;
-
-function criarQuizzComeco() {
-    listaQuizzes.classList.add('escondido');
-    telaCriarComeco.classList.remove('escondido');
-}
-function criarQuizzPerguntas() {
-    let dadosComeco = document.querySelectorAll('.criar-quizz-comeco li input');
-    titulo = dadosComeco[0].value;
-    imagem = dadosComeco[1].value;
-    const numPerguntas = Number(dadosComeco[2].value);
-    const numNiveis = Number(dadosComeco[3].value);
-    telaCriarComeco.classList.add('escondido');
-    telaCriarPerguntas.classList.remove("escondido");
-}
-function criarQuizzNiveis() {
-    telaCriarPerguntas.classList.add("escondido");
-    telaCriarFinal.classList.remove("escondido");
-}
-function acessarQuizz() {
-}
-
-const novoQuizz = {
-	title: titulo,
-	image: imagem,
-	questions: [
-		{
-			title: "Título da pergunta 1",
-			color: "#123456",
-			answers: [
-				{
-					text: "Texto da resposta 1",
-					image: "https://http.cat/411.jpg",
-					isCorrectAnswer: true
-				},
-				{
-					text: "Texto da resposta 2",
-					image: "https://http.cat/412.jpg",
-					isCorrectAnswer: false
-				}
-			]
-		}
-	],
-	levels: [
-		{
-			title: "Título do nível 1",
-			image: "https://http.cat/411.jpg",
-			text: "Descrição do nível 1",
-			minValue: 0
-		}
-	]
+    let insereRespostas = document.querySelector(".pagina-quizz ul li");
+    
+    for(let i=0; i < quizzEspecifico.questions.length; i++){
+        const resposta = insereRespostas.lastElementChild;
+        resposta.innerHTML = ``;
+        const pergunta = quizzEspecifico.questions[i];
+        for(let j = 0; j<pergunta.answers.length; j++){
+            resposta.innerHTML += `
+                    <div class="opcao-resposta">
+                        <img src="${pergunta.answers[j].image}">
+                        <p>${pergunta.answers[j].text}</p>
+                    </div>
+            `;
+        }
+        insereRespostas = insereRespostas.nextElementSibling;
+    }
 }
