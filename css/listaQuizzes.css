@@ -1,19 +1,101 @@
-nav {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-ul {
+.perfil-com-quizzes ul,
+.todos-os-quizzes ul {
     display: flex;
     flex-wrap: wrap;
     margin-top: 5px;
 }
 
-li {
+.perfil-sem-quizzes {
+    text-align: center;
+    width: 92vw;
+    height: 181px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border: dashed 1px #b9b9b9;
+    border-radius: 5px;
+}
+.perfil-sem-quizzes span {
+    color: #b9b9b9;
+    font-size: 20px;
+    margin: 0 60px;
+    line-height: 26.44px;
+}
+.botao-criar-quizz {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+    height: 40px;
+    color: #EC362D;
+    border: dashed 1px #EC362D;
+    border-radius: 50px;
+}
+
+.perfil-com-quizzes > div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.perfil-com-quizzes ion-icon {
+    font-size: 30px;
+    color: #EC362D;
+}
+
+.todos-os-quizzes ,
+.seus-quizzes {
+    width: 92vw;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+.todos-os-quizzes p,
+.perfil-com-quizzes p {
+    font-size: 20px;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.todos-os-quizzes li,
+.seus-quizzes li {
+    margin: 5px auto;
     background-image: url("../assets/simpson.jpg");
     background-size: 100%;
-    width: 340px;
+    width: 100%;
     height: 181px;
     border-radius: 5px;
-    background: linear-gradient(#FFFFFF00, 0%, black, 50%, black, 100%);
+}
+.degrade {
+    background: linear-gradient(#FFFFFF00, black);
+    width: inherit;
+    height: inherit;
+    border-radius: inherit;
+    position: relative;
+}
+
+.todos-os-quizzes li span,
+.seus-quizzes li span {
+    position: absolute;
+    margin: 0 5px;
+    color: white;
+    bottom: 10px;
+    left: 5px;
+}
+
+@media (min-width: 1100px) {
+
+    .perfil-sem-quizzes span{
+        padding: 0 350px;
+    }
+
+    .botao-criar-quizz {
+        width: 151px;
+    }
+
+    .todos-os-quizzes li,
+    .seus-quizzes li {
+        width: 340px;
+        margin: 5px;
+    }
 }

@@ -4,11 +4,13 @@
 body {
     font-family: 'Roboto', sans-serif;
     margin-top: 69px;
+    overflow-y: scroll;
 }
 strong {
     font-weight: bold;
 }
 header {
+    z-index: 1;
     height: 69px;
     width: 100vw;
     background-color: #EC362D;
@@ -20,8 +22,15 @@ header {
     position: fixed;
     top: 0;
     left: 0;
-    box-shadow: 0 0 0 3px rgba(0, 4, 4, 0.25);
+    box-shadow: 0 0 4px 3px rgba(0, 4, 4, 0.25);
+}
+main {
+    display: flex;
+    flex-direction: column;
 }
 .escondido {
-    display: none;
+    display: none !important;
+}
+
+@media (min-width: 1100px) {
 }
