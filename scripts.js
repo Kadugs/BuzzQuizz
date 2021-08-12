@@ -1,5 +1,11 @@
 let todosQuizzes = {};
 
+const listaQuizzes = document.querySelector(".lista-quizzes");
+const telaCriarComeco = document.querySelector(".criar-quizz-comeco");
+const telaCriarPerguntas = document.querySelector(".criar-quizz-perguntas");
+const telaCriarNiveis = document.querySelector(".criar-quizz-niveis");
+const telaCriarFinal = document.querySelector(".criar-quizz-final");
+
 // leitura de quizzes no servidor
 function buscarQuizzes(){
     const promessa = axios.get('https://mock-api.bootcamp.respondeai.com.br/api/v3/buzzquizz/quizzes');
@@ -87,4 +93,18 @@ function renderizarQuizz(){
         }
         insereRespostas = insereRespostas.nextElementSibling;
     }
+}
+function criarQuizzComeco() {
+    listaQuizzes.classList.add('escondido');
+    telaCriarComeco.classList.remove('escondido');
+}
+function criarQuizzPerguntas() {
+    telaCriarComeco.classList.add('escondido');
+    telaCriarPerguntas.classList.remove("escondido");
+}
+function criarQuizzNiveis() {
+    telaCriarPerguntas.classList.add("escondido");
+    telaCriarFinal.classList.remove("escondido");
+}
+function acessarQuizz() {
 }
