@@ -52,28 +52,7 @@
 
         <section class="todos-os-quizzes">
             <p><strong>Todos os quizzes</strong></p>
-            <ul>
-                <li>
-                    <div class="degrade">
-                        <span>Acerte os personagens corretos dos Simpsons e prove seu amor!</span>
-                    </div>
-                </li>
-                <li>
-                    <div class="degrade">
-                        <span>Acerte os personagens corretos dos Simpsons e prove seu amor!</span>
-                    </div>
-                </li>
-                <li>
-                    <div class="degrade">
-                        <span>Acerte os personagens corretos dos Simpsons e prove seu amor!</span>
-                    </div>
-                </li>
-                <li>
-                    <div class="degrade">
-                        <span>Acerte os personagens corretos dos Simpsons e prove seu amor!</span>
-                    </div>
-                </li>
-                
+            <ul>  
             </ul>
         </section>
     </main>
@@ -165,7 +144,7 @@
 
         <!--  TELA DE CRIAR QUIZZ 2 -->
 
-    <main class="telas-criar-quizz criar-quizz-perguntas escondido">
+    <main class="telas-criar-quizz criar-quizz-perguntas">
         <strong class="titulo-criar-quizz">Crie suas perguntas</strong>
 
         <ul>
@@ -204,7 +183,7 @@
 
         <!-- TELA DE CRIAR QUIZZ 3 -->
 
-    <main class="telas-criar-quizz criar-quizz-niveis">
+    <main class="telas-criar-quizz criar-quizz-niveis escondido">
         <strong class="titulo-criar-quizz">Agora, decida os níveis</strong>
 
         <ul>
@@ -229,9 +208,24 @@
 
     </main>
 
+    <main class="telas-criar-quizz criar-quizz-final escondido">
+        <strong class="titulo-criar-quizz">Seu quizz está pronto</strong>
+
+        <section class="img-quizz-criado">
+            <div class="degrade">
+                <span>O quão Potterhead é você?</span>
+            </div>
+        </section>
+
+        <div class="botao-criacao-quizz"> <span>Acessar Quizz</span></div>
+        <span>Voltar pra home</span>
+
+    </main>
+
 
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="scripts.js"></script>
 </body>
 </html>
