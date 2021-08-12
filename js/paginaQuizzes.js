@@ -77,14 +77,20 @@ function renderizarQuizz(){
         const resposta = insereRespostas.lastElementChild;
         resposta.innerHTML = ``;
         const pergunta = quizzEspecifico.questions[i];
-        for(let j = 0; j<pergunta.answers.length; j++){
+        let respostas = pergunta.answers;
+        respostas.sort(embaralharRespostas);
+        for(let j = 0; j<respostas.length; j++){
             resposta.innerHTML += `
                     <div class="opcao-resposta">
-                        <img src="${pergunta.answers[j].image}">
-                        <p>${pergunta.answers[j].text}</p>
+                        <img src="${respostas[j].image}">
+                        <p>${respostas[j].text}</p>
                     </div>
             `;
         }
         insereRespostas = insereRespostas.nextElementSibling;
     }
+}
+
+function embaralharRespostas() { 
+	return Math.random() - 0.5; 
 }
