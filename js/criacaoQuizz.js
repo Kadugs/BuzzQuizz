@@ -1,3 +1,5 @@
+const URL_QUIZZES = "https://mock-api.bootcamp.respondeai.com.br/api/v3/buzzquizz/quizzes";
+
 const listaQuizzes = document.querySelector(".lista-quizzes");
 const telaCriarComeco = document.querySelector(".criar-quizz-comeco");
 const telaCriarPerguntas = document.querySelector(".criar-quizz-perguntas");
@@ -7,6 +9,7 @@ let titulo;
 let urlImagem;
 let numPerguntas;
 let numNiveis;
+const meusQuizzes = [];
 const perguntas = [];
 const niveis = [];
 
@@ -61,7 +64,7 @@ function adicionaInfosNiveis() {
             title: grupoNiveis.querySelector('li:nth-child(2) input').value,
             image: grupoNiveis.querySelector('li:nth-child(4) input').value,
             text: grupoNiveis.querySelector('li:nth-child(5) textarea').value,
-            minValue: grupoNiveis.querySelector('li:nth-child(3) input').value
+            minValue: Number(grupoNiveis.querySelector('li:nth-child(3) input').value)
         }
     }
 }
@@ -74,6 +77,13 @@ function isPerguntasOk(p) {
         return false;
     }
 }
+function isNiveisOk(n) {
+    if(n.title < 10 || n.minValue < 0 || n.minValue > 100 || n.image.indexOf ("https://") === -1) {
+        return true;
+    } else {
+        return false;
+    }
+}
 
 function criarQuizzComeco() {
     listaQuizzes.classList.add('escondido');
@@ -81,33 +91,44 @@ function criarQuizzComeco() {
 }
 function criarQuizzPerguntas() {
     adicionaInfosBasicas();
-    /*if(titulo.length < 20 || titulo.length > 65 || urlImagem.indexOf("https://") === -1 || numPerguntas < 3 || numNiveis < 2) {
+    if(titulo.length < 20 || titulo.length > 65 || urlImagem.indexOf("https://") === -1 || numPerguntas < 3 || numNiveis < 2) {
         alert('Erro, verifique os dados preenchidos');
     } else {
         telaCriarComeco.classList.add('escondido');
         telaCriarPerguntas.classList.remove("escondido");
         renderizarAdicaoPergunta('ul', 1);
-    }*/
-    renderizarAdicaoPergunta('ul', 1);
-    telaCriarComeco.classList.add('escondido');
-    telaCriarPerguntas.classList.remove("escondido");
+    }
 }
 
 function criarQuizzNiveis() {
     adicionaInfosPerguntas();
 
-    /*for(let i = 0; i < numPerguntas; i++) {
+    for(let i = 0; i < numPerguntas; i++) {
         if(isPerguntasOk(perguntas[i])){
             alert('Erro, verifique os dados preenchidos');
             return;
         }
-    }*/
+    }
     renderizarAdicaoNiveis('ul', 1);
     telaCriarPerguntas.classList.add("escondido");
     telaCriarNiveis.classList.remove("escondido");
 }
 function criarQuizzFinal() {
     adicionaInfosNiveis();
+
+    for(let i = 0; i < numNiveis; i++) {
+        if(isNiveisOk(niveis[i])) {
+            alert('Erro, verifique os dados preenchidos');
+            return;
+        }
+    }
+    telaCriarNiveis.classList.add("escondido");
+    telaCriarFinal.classList.remove("escondido");
+}
+
+function voltaHome() {
+    telaCriarFinal.classList.add("escondido");
+    listaQuizzes.classList.remove('escondido');
 }
 
 function renderizarAdicaoPergunta(item, num) {
@@ -157,4 +178,6 @@ function enviaQuizz() {
         questions: perguntas,
         levels: niveis
     }
+    axios.post(URL_QUIZZES, novoQuizz);
+
 }
