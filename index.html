@@ -125,7 +125,7 @@
     </div>
 
     <!--  TELA DE CRIAR QUIZZ  -->
-        <!--  TELA DE CRIAR QUIZZ 1 -->
+        <!--  TELA DE CRIAR QUIZZ COMEÇO -->
     <main class="telas-criar-quizz criar-quizz-comeco escondido">   
         <strong class="titulo-criar-quizz">Comece pelo começo</strong>
 
@@ -139,49 +139,29 @@
         <div class="botao-criacao-quizz" onclick="criarQuizzPerguntas();"> <span>Prosseguir pra criar perguntas</span></div>
     </main>
 
-        <!--  TELA DE CRIAR QUIZZ 2 -->
+        <!--  TELA DE CRIAR QUIZZ PRGUNTAS -->
 
     <main class="telas-criar-quizz criar-quizz-perguntas escondido">
         <strong class="titulo-criar-quizz">Crie suas perguntas</strong>
-        <span id="pergunta1"></span>
 
-        <section class="adicionar-perguntas">
-            <strong> Pergunta 2</strong>
-            <ion-icon name="create-outline" onclick="renderizarAdicaoPergunta(this, 2)"></ion-icon>
-        </section>
-        <span id="pergunta2"></span>
-
-        <section class="adicionar-perguntas">
-            <strong> Pergunta 3</strong>
-            <ion-icon name="create-outline" onclick="renderizarAdicaoPergunta(this, 3)"></ion-icon>
-        </section>
-        <span id="pergunta3"></span>
+        <section id="pergunta1"></section>
 
         <div class="botao-criacao-quizz" onclick="criarQuizzNiveis();"> <span>Prosseguir pra criar níveis</span></div>
 
     </main>
 
-        <!-- TELA DE CRIAR QUIZZ 3 -->
+        <!-- TELA DE CRIAR QUIZZ NIVEIS -->
 
     <main class="telas-criar-quizz criar-quizz-niveis escondido">
         <strong class="titulo-criar-quizz">Agora, decida os níveis</strong>
-        <span id="nivel1"></span>
-
-        <section class="adicionar-niveis">
-            <strong> Nível 2</strong>
-            <ion-icon name="create-outline" onclick="renderizarAdicaoNiveis(this, 2)"></ion-icon>
-        </section>
-        <span id="nivel2"></span>
-
-        <section class="adicionar-niveis">
-            <strong> Nível 3</strong>
-            <ion-icon name="create-outline" onclick="renderizarAdicaoNiveis(this, 3)"></ion-icon>
-        </section>
-        <span id="nivel3"></span>
+        
+        <section id="nivel1"></section>
 
         <div class="botao-criacao-quizz" onclick="criarQuizzFinal();"> <span>Finalizar Quizz</span></div>
 
     </main>
+
+        <!-- TELA DE CRIAR QUIZZ FINAL -->
 
     <main class="telas-criar-quizz criar-quizz-final escondido">
         <strong class="titulo-criar-quizz">Seu quizz está pronto</strong>

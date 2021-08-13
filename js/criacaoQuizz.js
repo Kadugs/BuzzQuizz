@@ -96,7 +96,7 @@ function criarQuizzPerguntas() {
     } else {
         telaCriarComeco.classList.add('escondido');
         telaCriarPerguntas.classList.remove("escondido");
-        renderizarAdicaoPergunta('ul', 1);
+        renderizarAdicaoPergunta(1);
     }
 }
 
@@ -109,7 +109,7 @@ function criarQuizzNiveis() {
             return;
         }
     }
-    renderizarAdicaoNiveis('ul', 1);
+    renderizarAdicaoNiveis(1);
     telaCriarPerguntas.classList.add("escondido");
     telaCriarNiveis.classList.remove("escondido");
 }
@@ -131,8 +131,9 @@ function voltaHome() {
     listaQuizzes.classList.remove('escondido');
 }
 
-function renderizarAdicaoPergunta(item, num) {
-    document.getElementById(`pergunta${num}`).innerHTML =
+function renderizarAdicaoPergunta(num) {
+    const blocoCriarPerguntas = document.getElementById(`pergunta${num}`);
+    blocoCriarPerguntas.innerHTML =
     `<ul>
         <li class="subtitulo-criar-quizz"><strong> Pergunta ${num}</strong></li>
         <li><input type="text" placeholder="Texto da pergunta" required></li>
@@ -152,12 +153,19 @@ function renderizarAdicaoPergunta(item, num) {
         <li><input type="text" placeholder="Resposta incorreta 3" required></li>
         <li><input type="text" placeholder="URL da imagem 3" required></li>
     </ul>`
-    if(num > 1) {
-        item.parentNode.classList.add('escondido');
+
+    if(num === 1) {
+        for(let i = 2; i <= numPerguntas; i++) {
+            blocoCriarPerguntas.innerHTML += 
+            `<section class="adicionar-perguntas" id="pergunta${i}">
+                <strong> Pergunta ${i}</strong>
+                <ion-icon name="create-outline" onclick="renderizarAdicaoPergunta(${i})"></ion-icon>
+            </section>`
+        }
     }
 }
 
-function renderizarAdicaoNiveis(item, num) {
+function renderizarAdicaoNiveis(num) {
     document.getElementById(`nivel${num}`).innerHTML = 
     `<ul>
         <li class="subtitulo-criar-quizz"><strong>Nível ${num}</strong></li>
@@ -166,8 +174,14 @@ function renderizarAdicaoNiveis(item, num) {
         <li><input type="text" placeholder="URL da imagem do nível" required></li>
         <li><textarea placeholder="Descrição do nível" required></textarea></li>
     </ul>`
-    if(num > 1) {
-        item.parentNode.classList.add('escondido');
+    if(num === 1) {
+        for(let i = 2; i <= numPerguntas; i++) {
+            blocoCriarPerguntas.innerHTML += 
+            `<section class="adicionar-niveis">
+                <strong> Nível ${i}</strong>
+                <ion-icon name="create-outline" onclick="renderizarAdicaoNiveis(${i})"></ion-icon>
+            </section>`
+        }
     }
 }
 

@@ -67,7 +67,7 @@
     background-color: white;
     margin-top: 20px;
     width: 100vw;
-    height: 74px;
+    min-height: 74px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -92,10 +92,6 @@
     text-align: center;
     color: #818181;
     font-size: 18px;
-}
-#pergunta1, #pergunta2, #pergunta3 {
-    margin-top: auto;
-    margin-bottom: auto;
 }
 
 
