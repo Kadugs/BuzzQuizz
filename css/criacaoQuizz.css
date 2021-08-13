@@ -93,6 +93,10 @@
     color: #818181;
     font-size: 18px;
 }
+#pergunta1, #pergunta2, #pergunta3 {
+    margin-top: auto;
+    margin-bottom: auto;
+}
 
 
 

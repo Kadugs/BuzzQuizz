@@ -143,37 +143,18 @@
 
     <main class="telas-criar-quizz criar-quizz-perguntas escondido">
         <strong class="titulo-criar-quizz">Crie suas perguntas</strong>
-
-        <ul>
-            <li class="subtitulo-criar-quizz"><strong> Pergunta 1</strong></li>
-            <li><input type="text" placeholder="Texto da pergunta" required></li>
-            <li><input type="text" placeholder="Cor de fundo da pergunta" required></li>
-
-            <li class="subtitulo-criar-quizz"><strong> Resposta correta</strong></li>
-            <li><input type="text" placeholder="Resposta correta" required></li>
-            <li><input type="text" placeholder="URL da imagem" required></li>
-
-            <li class="subtitulo-criar-quizz"><strong> Respostas incorretas</strong></li>
-            <li><input type="text" placeholder="Resposta incorreta 1" required></li>
-            <li class="respiro-li"><input type="text" placeholder="URL da imagem 1" required></li>
-
-            <li><input type="text" placeholder="Resposta incorreta 2" required></li>
-            <li class="respiro-li"><input type="text" placeholder="URL da imagem 2" required></li>
-
-            <li><input type="text" placeholder="Resposta incorreta 3" required></li>
-            <li><input type="text" placeholder="URL da imagem 3" required></li>
-        </ul>
-
+        <span id="pergunta1"></span>
         <section class="adicionar-perguntas">
             <strong> Pergunta 2</strong>
-            <ion-icon name="create-outline"></ion-icon>
+            <ion-icon name="create-outline" onclick="renderizarAdicaoPergunta(this, 2)"></ion-icon>
         </section>
+        <span id="pergunta2"></span>
 
         <section class="adicionar-perguntas">
             <strong> Pergunta 3</strong>
-            <ion-icon name="create-outline"></ion-icon>
+            <ion-icon name="create-outline" onclick="renderizarAdicaoPergunta(this, 3)"></ion-icon>
         </section>
-        
+        <span id="pergunta3"></span>
         <div class="botao-criacao-quizz" onclick="criarQuizzNiveis();"> <span>Prosseguir pra criar níveis</span></div>
 
     </main>
