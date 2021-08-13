@@ -7,7 +7,9 @@ let titulo;
 let urlImagem;
 let numPerguntas;
 let numNiveis;
-let perguntas = [];
+const perguntas = [];
+const niveis = [];
+
 function adicionaInfosBasicas() {
     const dadosComeco = document.querySelectorAll('.criar-quizz-comeco li input');
     titulo = dadosComeco[0].value;
@@ -15,6 +17,7 @@ function adicionaInfosBasicas() {
     numPerguntas = Number(dadosComeco[2].value);
     numNiveis = Number(dadosComeco[3].value);
 }
+
 function adicionaInfosPerguntas() {
     for(let i = 0; i < numPerguntas; i++) {
         let grupoPerguntas = document.getElementById(`pergunta${i + 1}`);
@@ -51,68 +54,107 @@ function adicionaInfosPerguntas() {
     }
 }
 
+function adicionaInfosNiveis() {
+    for(let i = 0; i < numNiveis; i++) {
+        let grupoNiveis = document.getElementById(`nivel${i + 1}`);
+        niveis[i] = {
+            title: grupoNiveis.querySelector('li:nth-child(2) input').value,
+            image: grupoNiveis.querySelector('li:nth-child(4) input').value,
+            text: grupoNiveis.querySelector('li:nth-child(5) textarea').value,
+            minValue: grupoNiveis.querySelector('li:nth-child(3) input').value
+        }
+    }
+}
+
+function isPerguntasOk(p) {
+    if(p.title.length < 20 || p.color.indexOf("#") !== 0 || p.answers[0].text === "" || p.answers[1].text === "" || 
+    p.answers[0].image.indexOf("https://") === -1 || p.answers[1].image.indexOf("https://") === -1) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 function criarQuizzComeco() {
     listaQuizzes.classList.add('escondido');
     telaCriarComeco.classList.remove('escondido');
 }
 function criarQuizzPerguntas() {
     adicionaInfosBasicas();
-    /*if(titulo.length >= 20 && titulo.length <= 65 && urlImagem.indexOf("https://") !== -1 && numPerguntas >= 3 && numNiveis >= 2) {
+    /*if(titulo.length < 20 || titulo.length > 65 || urlImagem.indexOf("https://") === -1 || numPerguntas < 3 || numNiveis < 2) {
+        alert('Erro, verifique os dados preenchidos');
+    } else {
         telaCriarComeco.classList.add('escondido');
         telaCriarPerguntas.classList.remove("escondido");
         renderizarAdicaoPergunta('ul', 1);
-    } else {
-        alert('Erro!');
     }*/
     renderizarAdicaoPergunta('ul', 1);
     telaCriarComeco.classList.add('escondido');
     telaCriarPerguntas.classList.remove("escondido");
 }
+
 function criarQuizzNiveis() {
     adicionaInfosPerguntas();
+
+    /*for(let i = 0; i < numPerguntas; i++) {
+        if(isPerguntasOk(perguntas[i])){
+            alert('Erro, verifique os dados preenchidos');
+            return;
+        }
+    }*/
+    renderizarAdicaoNiveis('ul', 1);
     telaCriarPerguntas.classList.add("escondido");
     telaCriarNiveis.classList.remove("escondido");
 }
-function acessarQuizz() {
+function criarQuizzFinal() {
+    adicionaInfosNiveis();
 }
 
 function renderizarAdicaoPergunta(item, num) {
-    document.getElementById(`pergunta${num}`).innerHTML +=
+    document.getElementById(`pergunta${num}`).innerHTML =
     `<ul>
-    <li class="subtitulo-criar-quizz"><strong> Pergunta ${num}</strong></li>
-    <li><input type="text" placeholder="Texto da pergunta" required></li>
-    <li><input type="text" placeholder="Cor de fundo da pergunta" required></li>
+        <li class="subtitulo-criar-quizz"><strong> Pergunta ${num}</strong></li>
+        <li><input type="text" placeholder="Texto da pergunta" required></li>
+        <li><input type="text" placeholder="Cor de fundo da pergunta" required></li>
 
-    <li class="subtitulo-criar-quizz"><strong> Resposta correta</strong></li>
-    <li><input type="text" placeholder="Resposta correta" required></li>
-    <li><input type="text" placeholder="URL da imagem" required></li>
+        <li class="subtitulo-criar-quizz"><strong> Resposta correta</strong></li>
+        <li><input type="text" placeholder="Resposta correta" required></li>
+        <li><input type="text" placeholder="URL da imagem" required></li>
 
-    <li class="subtitulo-criar-quizz"><strong> Respostas incorretas</strong></li>
-    <li><input type="text" placeholder="Resposta incorreta 1" required></li>
-    <li class="respiro-li"><input type="text" placeholder="URL da imagem 1" required></li>
+        <li class="subtitulo-criar-quizz"><strong> Respostas incorretas</strong></li>
+        <li><input type="text" placeholder="Resposta incorreta 1" required></li>
+        <li class="respiro-li"><input type="text" placeholder="URL da imagem 1" required></li>
 
-    <li><input type="text" placeholder="Resposta incorreta 2" required></li>
-    <li class="respiro-li"><input type="text" placeholder="URL da imagem 2" required></li>
+        <li><input type="text" placeholder="Resposta incorreta 2" required></li>
+        <li class="respiro-li"><input type="text" placeholder="URL da imagem 2" required></li>
 
-    <li><input type="text" placeholder="Resposta incorreta 3" required></li>
-    <li><input type="text" placeholder="URL da imagem 3" required></li>
+        <li><input type="text" placeholder="Resposta incorreta 3" required></li>
+        <li><input type="text" placeholder="URL da imagem 3" required></li>
     </ul>`
     if(num > 1) {
         item.parentNode.classList.add('escondido');
     }
 }
+
+function renderizarAdicaoNiveis(item, num) {
+    document.getElementById(`nivel${num}`).innerHTML = 
+    `<ul>
+        <li class="subtitulo-criar-quizz"><strong>Nível ${num}</strong></li>
+        <li><input type="text" placeholder="Título do nível" required></li>
+        <li><input type="text" placeholder="% de acerto mínima" required></li>
+        <li><input type="text" placeholder="URL da imagem do nível" required></li>
+        <li><textarea placeholder="Descrição do nível" required></textarea></li>
+    </ul>`
+    if(num > 1) {
+        item.parentNode.classList.add('escondido');
+    }
+}
+
 function enviaQuizz() {
     const novoQuizz = {
         title: titulo,
         image: urlImagem,
         questions: perguntas,
-        levels: [
-            {
-                title: "Título do nível 1",
-                image: "https://http.cat/411.jpg",
-                text: "Descrição do nível 1",
-                minValue: 0
-            }
-        ]
+        levels: niveis
     }
 }
