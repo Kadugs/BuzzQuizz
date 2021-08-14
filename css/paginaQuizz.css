@@ -14,11 +14,21 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
-.topo-quizz img{
+.topo-quizz p{
+    z-index: 2;
+}
+.fundo{
+    position: absolute;
+    top: 0;
     width: 100vw;
-    height: 142px;
+    height: 212px;
+    background-color: black;
+    opacity: 0.6;
+    /* z-index: -6; */
 }
+
 .pergunta-quizz-conteiner{
     margin: 24px 0;
     padding: 24px 0;
@@ -28,7 +38,7 @@
     align-items: center;    
 }
 .pergunta-quizz{
-    height: 100px;
+    min-height: 100px;
     width: 90vw;
     color: #ffffff;
     font-size: 19px;
@@ -37,6 +47,11 @@
     align-items: center;
     text-align: center; 
     justify-content: center;
+    
+}
+.pergunta-quizz p{
+    word-wrap: break-word;
+    width: 90vw;
 }
 .respostas-conteiner{
     width: 90vw;
@@ -46,7 +61,7 @@
 }
 .opcao-resposta img{
     width: 43vw;
-    height: 19vh;
+    height: 25vh;
 }
 .opcao-resposta{
     margin: 13px 0 5px 0;
@@ -133,6 +148,9 @@
     }
     .pergunta-quizz-conteiner{
         height: 676px;
+    }
+    .opcao-resposta{
+        width: 23vw;
     }
     .opcao-resposta img{
         width: 23vw;
