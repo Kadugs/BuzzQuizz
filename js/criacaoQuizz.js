@@ -124,6 +124,7 @@ function criarQuizzFinal() {
     }
     telaCriarNiveis.classList.add("escondido");
     telaCriarFinal.classList.remove("escondido");
+    enviaQuizz();
 }
 
 function voltaHome() {
@@ -166,7 +167,8 @@ function renderizarAdicaoPergunta(num) {
 }
 
 function renderizarAdicaoNiveis(num) {
-    document.getElementById(`nivel${num}`).innerHTML = 
+    const blocoCriarNiveis = document.getElementById(`nivel${num}`)
+    blocoCriarNiveis.innerHTML = 
     `<ul>
         <li class="subtitulo-criar-quizz"><strong>Nível ${num}</strong></li>
         <li><input type="text" placeholder="Título do nível" required></li>
@@ -176,8 +178,8 @@ function renderizarAdicaoNiveis(num) {
     </ul>`
     if(num === 1) {
         for(let i = 2; i <= numPerguntas; i++) {
-            blocoCriarPerguntas.innerHTML += 
-            `<section class="adicionar-niveis">
+            blocoCriarNiveis.innerHTML += 
+            `<section class="adicionar-niveis" id="nivel${i}">
                 <strong> Nível ${i}</strong>
                 <ion-icon name="create-outline" onclick="renderizarAdicaoNiveis(${i})"></ion-icon>
             </section>`
@@ -192,6 +194,15 @@ function enviaQuizz() {
         questions: perguntas,
         levels: niveis
     }
-    axios.post(URL_QUIZZES, novoQuizz);
+    const quizzEnviado = axios.post(URL_QUIZZES, novoQuizz);
+    quizzEnviado.then(salvaMeuQuizz);
+    quizzEnviado.catch(trataErro);
+}
+
+function salvaMeuQuizz(quizzSalvo) {
+    console.log(quizzSalvo);
+}
+
+function trataErro() {
 
 }
