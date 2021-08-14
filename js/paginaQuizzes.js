@@ -17,9 +17,10 @@ function renderizarQuizzes(){
     
     const quizzes = document.querySelector(".todos-os-quizzes ul");
     quizzes.innerHTML = '';
+    console.log(todosQuizzes);
     for(let i=0; i<todosQuizzes.length; i++){
         quizzes.innerHTML += `
-        <li onclick="abrirQuizz(this, '${todosQuizzes[i].title}')">
+        <li onclick="abrirQuizz(this, ${todosQuizzes[i].id})">
             <div class="degrade">
                 <span>${todosQuizzes[i].title}</span>
             </div>
@@ -36,14 +37,14 @@ let quizzEspecifico = {};
 
 // abre a paginaQuizz com o quizz selecionado respectivo
 
-function abrirQuizz(elemento, tituloQuizz){
+function abrirQuizz(elemento, idQuizz){
    
     listaQuizzes.classList.add("escondido");
     
     paginaQuizz.classList.remove("escondido");
     
     for(let i=0; i<todosQuizzes.length; i++){
-        if(tituloQuizz === todosQuizzes[i].title){
+        if(idQuizz === todosQuizzes[i].id){
             quizzEspecifico = todosQuizzes[i];
         }
     } 

@@ -1,5 +1,4 @@
 const URL_QUIZZES = "https://mock-api.bootcamp.respondeai.com.br/api/v3/buzzquizz/quizzes";
-
 const listaQuizzes = document.querySelector(".lista-quizzes");
 const telaCriarComeco = document.querySelector(".criar-quizz-comeco");
 const telaCriarPerguntas = document.querySelector(".criar-quizz-perguntas");
@@ -9,7 +8,6 @@ let titulo;
 let urlImagem;
 let numPerguntas;
 let numNiveis;
-const meusQuizzes = [];
 const perguntas = [];
 const niveis = [];
 
@@ -69,6 +67,11 @@ function adicionaInfosNiveis() {
     }
 }
 
+function adicionaInfosFinais() {
+    telaCriarFinal.querySelector(".img-quizz-criado").style.backgroundImage = `url(${urlImagem})`;
+    telaCriarFinal.querySelector(".img-quizz-criado span").innerHTML = titulo;
+}
+
 function isPerguntasOk(p) {
     if(p.title.length < 20 || p.color.indexOf("#") !== 0 || p.answers[0].text === "" || p.answers[1].text === "" || 
     p.answers[0].image.indexOf("https://") === -1 || p.answers[1].image.indexOf("https://") === -1) {
@@ -91,6 +94,7 @@ function criarQuizzComeco() {
 }
 function criarQuizzPerguntas() {
     adicionaInfosBasicas();
+    adicionaInfosFinais();
     if(titulo.length < 20 || titulo.length > 65 || urlImagem.indexOf("https://") === -1 || numPerguntas < 3 || numNiveis < 2) {
         alert('Erro, verifique os dados preenchidos');
     } else {
@@ -177,7 +181,7 @@ function renderizarAdicaoNiveis(num) {
         <li><textarea placeholder="Descrição do nível" required></textarea></li>
     </ul>`
     if(num === 1) {
-        for(let i = 2; i <= numPerguntas; i++) {
+        for(let i = 2; i <= numNiveis; i++) {
             blocoCriarNiveis.innerHTML += 
             `<section class="adicionar-niveis" id="nivel${i}">
                 <strong> Nível ${i}</strong>
@@ -186,7 +190,6 @@ function renderizarAdicaoNiveis(num) {
         }
     }
 }
-
 function enviaQuizz() {
     const novoQuizz = {
         title: titulo,
@@ -196,13 +199,29 @@ function enviaQuizz() {
     }
     const quizzEnviado = axios.post(URL_QUIZZES, novoQuizz);
     quizzEnviado.then(salvaMeuQuizz);
-    quizzEnviado.catch(trataErro);
+
+    quizzEnviado.catch((erro) => {
+        console.log(erro.status);
+        alert("Erro! Quizz não foi criado!");
+        window.location.reload();
+    });
 }
 
 function salvaMeuQuizz(quizzSalvo) {
-    console.log(quizzSalvo);
+    const identificador = quizzSalvo.data.id;
+    if(localStorage.getItem("quizzes" === undefined)) {
+        const quizzSerializado = JSON.stringify(identificador);
+        localStorage.setItem("quizzes", `[${quizzSerializado}]`);
+    } else {
+        let quizzesSerializados = localStorage.getItem("quizzes");
+        const meusQuizzes = JSON.parse(quizzesSerializados);
+        meusQuizzes.push(identificador);
+        quizzesSerializados = JSON.stringify(meusQuizzes);
+        localStorage.setItem("quizzes", quizzesSerializados);
+    }
 }
 
-function trataErro() {
-
+function abrirQuizzCriado() {
+    telaCriarFinal.classList.add("escondido");
+    abrirQuizz(meusQuizzes[meusQuizzes.length - 1]);
 }

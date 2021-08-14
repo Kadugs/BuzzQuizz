@@ -5,6 +5,7 @@ body {
     font-family: 'Roboto', sans-serif;
     margin-top: 69px;
     overflow-y: scroll;
+    word-break: break-all;
 }
 strong {
     font-weight: bold;
