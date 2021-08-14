@@ -1,4 +1,5 @@
 let todosQuizzes = {};
+const paginaQuizz = document.querySelector(".pagina-quizz");
 
 // leitura de quizzes no servidor
 function buscarQuizzes(){
@@ -36,9 +37,9 @@ let quizzEspecifico = {};
 // abre a paginaQuizz com o quizz selecionado respectivo
 
 function abrirQuizz(elemento, tituloQuizz){
-    const listaQuizzes = document.querySelector(".lista-quizzes");
+   
     listaQuizzes.classList.add("escondido");
-    const paginaQuizz = document.querySelector(".pagina-quizz");
+    
     paginaQuizz.classList.remove("escondido");
     
     for(let i=0; i<todosQuizzes.length; i++){
@@ -53,9 +54,10 @@ function abrirQuizz(elemento, tituloQuizz){
 
 function renderizarQuizz(){
     const mudaTopo = document.querySelector(".pagina-quizz .topo-quizz");
-   
     mudaTopo.style.backgroundImage = `url("${quizzEspecifico.image}")`;
-    mudaTopo.innerHTML = `${quizzEspecifico.title}`;
+    
+    const mudaTextoTopo = document.querySelector(".pagina-quizz .topo-quizz p")
+    mudaTextoTopo.innerHTML = `${quizzEspecifico.title}`;
    
     const inserePerguntas = document.querySelector(".pagina-quizz ul");
     inserePerguntas.innerHTML = ``;
@@ -64,7 +66,7 @@ function renderizarQuizz(){
         inserePerguntas.innerHTML += `
             <li class="pergunta-quizz-conteiner">
                 <div class="pergunta-quizz azul">
-                    <strong> ${pergunta.title}</strong>
+                    <p><strong> ${pergunta.title}</strong></p>
                 </div>
                 <div class="respostas-conteiner">
                 </div>
@@ -93,4 +95,13 @@ function renderizarQuizz(){
 
 function embaralharRespostas() { 
 	return Math.random() - 0.5; 
+}
+
+function reiniciarQuizz(){
+    
+}
+
+function voltarHome(){  
+    listaQuizzes.classList.remove("escondido");
+    paginaQuizz.classList.add("escondido");
 }

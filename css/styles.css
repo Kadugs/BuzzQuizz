@@ -10,7 +10,7 @@ strong {
     font-weight: bold;
 }
 header {
-    z-index: 1;
+    z-index: 5;
     height: 69px;
     width: 100vw;
     color: #ffffff;
