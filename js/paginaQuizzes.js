@@ -103,6 +103,5 @@ function reiniciarQuizz(){
 }
 
 function voltarHome(){  
-    listaQuizzes.classList.remove("escondido");
-    paginaQuizz.classList.add("escondido");
+    window.location.reload();
 }

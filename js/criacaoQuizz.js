@@ -207,6 +207,7 @@ function enviaQuizz() {
     });
 }
 
+
 function salvaMeuQuizz(quizzSalvo) {
     const identificador = quizzSalvo.data.id;
     if(localStorage.getItem("quizzes" === undefined)) {
@@ -221,7 +222,9 @@ function salvaMeuQuizz(quizzSalvo) {
     }
 }
 
-function abrirQuizzCriado() {
+function abrirQuizzCriado(item) {
+    const meusQuizzesSalvos = JSON.parse(localStorage.getItem("quizzes"));
     telaCriarFinal.classList.add("escondido");
-    abrirQuizz(meusQuizzes[meusQuizzes.length - 1]);
+    let valor = meusQuizzesSalvos.length - 1;
+    abrirQuizz(item, meusQuizzesSalvos[valor]);
 }
