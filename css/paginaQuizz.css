@@ -119,6 +119,7 @@
     font-size: 18px;
     line-height: 21px;
     border-radius: 40px;
+    margin-bottom: 20px;
 }
 .opcao-resposta:active, .voltar-home:active, .reiniciar-quizz:active{
     transform: scale(0.97);
@@ -162,5 +163,6 @@
     }
     .reiniciar-quizz, .voltar-home{
         width: 220px;
+        
     }
 }

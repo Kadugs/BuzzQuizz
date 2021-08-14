@@ -1,4 +1,5 @@
 let todosQuizzes = {};
+const paginaQuizz = document.querySelector(".pagina-quizz");
 
 // leitura de quizzes no servidor
 function buscarQuizzes(){
@@ -36,9 +37,9 @@ let quizzEspecifico = {};
 // abre a paginaQuizz com o quizz selecionado respectivo
 
 function abrirQuizz(elemento, tituloQuizz){
-    const listaQuizzes = document.querySelector(".lista-quizzes");
+   
     listaQuizzes.classList.add("escondido");
-    const paginaQuizz = document.querySelector(".pagina-quizz");
+    
     paginaQuizz.classList.remove("escondido");
     
     for(let i=0; i<todosQuizzes.length; i++){
@@ -93,4 +94,13 @@ function renderizarQuizz(){
 
 function embaralharRespostas() { 
 	return Math.random() - 0.5; 
+}
+
+function reiniciarQuizz(){
+    
+}
+
+function voltarHome(){  
+    listaQuizzes.classList.remove("escondido");
+    paginaQuizz.classList.add("escondido");
 }
