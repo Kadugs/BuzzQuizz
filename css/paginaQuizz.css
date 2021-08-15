@@ -18,6 +18,7 @@
 }
 .topo-quizz p{
     z-index: 2;
+    word-wrap: break-word;
 }
 .fundo{
     position: absolute;
@@ -69,7 +70,29 @@
 .opcao-resposta p{
     word-wrap: break-word;
     width: 43vw;
+    color: #000000;
 }
+
+.resposta-correta p{
+    color: #009c22;
+    opacity: 0.3;
+}
+.resposta-correta img, .resposta-incorreta img{
+    opacity: 0.3;
+}
+.resposta-incorreta p{
+    color: #ff0b0b;
+    opacity: 0.3;
+}
+
+.esconder img, .esconder p{
+    opacity: 1;
+    color: #000000;
+}
+.marcado img, .marcado p{
+    opacity: 1;
+}
+
 
 .final-quizz-conteiner{
     margin: 24px 0;

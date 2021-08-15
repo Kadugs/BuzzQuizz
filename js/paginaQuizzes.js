@@ -1,6 +1,8 @@
 let todosQuizzes = {};
 const paginaQuizz = document.querySelector(".pagina-quizz");
 
+
+
 // leitura de quizzes no servidor
 function buscarQuizzes(){
     const promessa = axios.get('https://mock-api.bootcamp.respondeai.com.br/api/v3/buzzquizz/quizzes');
@@ -43,14 +45,14 @@ function abrirQuizz(elemento, idQuizz){
     
     paginaQuizz.classList.remove("escondido");
     
-    for(let i=0; i<todosQuizzes.length; i++){
-        if(idQuizz === todosQuizzes[i].id){
-            quizzEspecifico = todosQuizzes[i];
-        }
-    } 
+    const promessa = axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v3/buzzquizz/quizzes/" +idQuizz);
+    promessa.then(processarQuizz);
     
+}
+function processarQuizz(resposta){
+    quizzEspecifico = resposta.data;
+    console.log(resposta.data);
     renderizarQuizz();
-   
 }
 
 function renderizarQuizz(){
@@ -83,23 +85,50 @@ function renderizarQuizz(){
         let respostas = pergunta.answers;
         respostas.sort(embaralharRespostas);
         for(let j = 0; j<respostas.length; j++){
-            resposta.innerHTML += `
-                    <div class="opcao-resposta">
+            if(respostas[j].isCorrectAnswer){
+                resposta.innerHTML += `
+                    <div class="opcao-resposta resposta-correta esconder" onclick="marcarResposta(this, ${respostas.length})">
                         <img src="${respostas[j].image}">
-                        <p>${respostas[j].text}</p>
+                        <p><strong>${respostas[j].text}</strong></p>
                     </div>
             `;
+            } else{
+                resposta.innerHTML += `
+                    <div class="opcao-resposta resposta-incorreta esconder" onclick="marcarResposta(this, ${respostas.length})">
+                        <img src="${respostas[j].image}">
+                        <p><strong>${respostas[j].text}</strong></p>
+                    </div>
+            `;
+            }
+            
         }
         insereRespostas = insereRespostas.nextElementSibling;
     }
+    window.scrollTo(0,0);
+    
 }
+
+// para marcar as respostas e mostrar se acertou ou errou
+
+function marcarResposta(elemento, numRespostas){
+    let respostas = elemento.parentNode.firstElementChild;
+    console.log(respostas);
+    for(let i=0; i < numRespostas; i++){
+        respostas.classList.remove("esconder");
+        respostas = respostas.nextElementSibling;
+    }
+    elemento.classList.add("marcado");
+    
+}
+
 
 function embaralharRespostas() { 
 	return Math.random() - 0.5; 
 }
 
 function reiniciarQuizz(){
-    
+    renderizarQuizz();
+    window.scrollTo(0,0);
 }
 
 function voltarHome(){  
