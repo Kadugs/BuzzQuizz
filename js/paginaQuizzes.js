@@ -113,12 +113,21 @@ function renderizarQuizz(){
 function marcarResposta(elemento, numRespostas){
     let respostas = elemento.parentNode.firstElementChild;
     console.log(respostas);
+    let possuiMarcado = false;
     for(let i=0; i < numRespostas; i++){
         respostas.classList.remove("esconder");
+        if(respostas.classList.contains("marcado")){
+            possuiMarcado = true;
+        }
+        
         respostas = respostas.nextElementSibling;
     }
-    elemento.classList.add("marcado");
+    const verificaMarcacao = elemento.parentNode;
+    console.log(possuiMarcado);
     
+    if(possuiMarcado === false){
+        elemento.classList.add("marcado");
+    }
 }
 
 
