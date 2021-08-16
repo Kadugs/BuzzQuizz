@@ -1,5 +1,7 @@
 let todosQuizzes = {};
 const paginaQuizz = document.querySelector(".pagina-quizz");
+let qtdPerguntasMarcadas = 0;
+let qtdRespostasCertas = 0;
 
 
 // leitura de quizzes no servidor
@@ -77,7 +79,6 @@ function abrirQuizz(elemento, idQuizz){
 }
 function processarQuizz(resposta){
     quizzEspecifico = resposta.data;
-    console.log(resposta.data);
     renderizarQuizz();
 }
 
@@ -94,14 +95,22 @@ function renderizarQuizz(){
         const pergunta = quizzEspecifico.questions[i];
         inserePerguntas.innerHTML += `
             <li class="pergunta-quizz-conteiner">
-                <div class="pergunta-quizz azul">
+                <div class="pergunta-quizz">
                     <p><strong> ${pergunta.title}</strong></p>
                 </div>
                 <div class="respostas-conteiner">
                 </div>
             </li> 
         `;
+        const conteinerPergunta = document.querySelector(".pagina-quizz ul").lastElementChild;
+        
+        const mudaCor = conteinerPergunta.firstElementChild;
+        
+        mudaCor.style.backgroundColor = `${quizzEspecifico.questions[i].color}`;
+
     }
+
+
     let insereRespostas = document.querySelector(".pagina-quizz ul li");
     
     for(let i=0; i < quizzEspecifico.questions.length; i++){
@@ -138,7 +147,7 @@ function renderizarQuizz(){
 
 function marcarResposta(elemento, numRespostas){
     let respostas = elemento.parentNode.firstElementChild;
-    console.log(respostas);
+    
     let possuiMarcado = false;
     for(let i=0; i < numRespostas; i++){
         respostas.classList.remove("esconder");
@@ -149,11 +158,46 @@ function marcarResposta(elemento, numRespostas){
         respostas = respostas.nextElementSibling;
     }
     const verificaMarcacao = elemento.parentNode;
-    console.log(possuiMarcado);
+    
     
     if(possuiMarcado === false){
         elemento.classList.add("marcado");
+        const verificaResposta = elemento.classList.contains("resposta-correta");
+        qtdPerguntasMarcadas = qtdPerguntasMarcadas + 1;
+        if(verificaResposta){
+            qtdRespostasCertas = qtdRespostasCertas + 1;
+        }
     }
+    if(qtdPerguntasMarcadas === quizzEspecifico.questions.length){
+        mostrarResultado();
+    }
+}
+
+// mostrar resultado do quizz
+
+function mostrarResultado(){
+    const resultado = Math.round((qtdRespostasCertas/qtdPerguntasMarcadas)*100);
+    console.log(resultado);
+    const qtdNiveis = quizzEspecifico.levels.length;
+    let nivelObtido = 0;
+    for(let i = 0; i < qtdNiveis; i++){
+        if(resultado >= quizzEspecifico.levels[i].minValue){
+            nivelObtido = i;
+        }
+    }
+    const ul = document.querySelector(".pagina-quizz ul").lastElementChild;
+    ul.innerHTML += `
+    <li class="final-quizz-conteiner">
+        <div class="final-quizz vermelho">
+            <strong> `+ resultado + `% de acerto: `+`${quizzEspecifico.levels[nivelObtido].title}</strong>
+        </div>  
+                <div class="imagem-final">
+                    <img src="${quizzEspecifico.levels[nivelObtido].image}">
+                    <p><strong>${quizzEspecifico.levels[nivelObtido].text}</strong></p>
+                </div> 
+    </li>
+    `
+    console.log(nivelObtido);
 }
 
 
@@ -163,6 +207,8 @@ function embaralharRespostas() {
 
 function reiniciarQuizz(){
     renderizarQuizz();
+    qtdPerguntasMarcadas = 0;
+    qtdRespostasCertas = 0;
     window.scrollTo(0,0);
 }
 
