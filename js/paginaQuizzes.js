@@ -197,7 +197,9 @@ function mostrarResultado(){
                 </div> 
     </li>
     `
-    console.log(nivelObtido);
+    paginaQuizz.innerHTML += `
+    <div class="reiniciar-quizz vermelho" onclick="reiniciarQuizz()">Reiniciar Quizz</div>
+    <div class="voltar-home" onclick="voltarHome()">Voltar para home</div>`;
 }
 
 

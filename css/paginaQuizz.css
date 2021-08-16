@@ -175,6 +175,7 @@
     }
     .opcao-resposta{
         width: 23vw;
+        word-wrap: break-word;
     }
     .opcao-resposta img{
         width: 23vw;
@@ -182,9 +183,11 @@
     }
     .opcao-resposta p{
         font-weight: bold;
+        width: 23vw;
         font-size: 20px;
         line-height: 23px;
         margin-top: 10px;
+        word-wrap: break-word;
     }
     .final-quizz, .imagem-final{
         width: 50vw;
