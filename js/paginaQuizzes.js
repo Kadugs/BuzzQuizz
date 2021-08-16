@@ -16,8 +16,9 @@ function processarQuizzes(resposta){
     renderizarQuizzes();
 }
 function verificaSeTemQuizzes(){
-    const quizzesSalvos = localStorage.getItem("quizzes");
-    if(quizzesSalvos !== "[-1]"){
+    const quizzesSerializados = localStorage.getItem("quizzes");
+    const quizzesSalvos = JSON.parse(quizzesSerializados);
+    if(quizzesSerializados !== "[-1]" && quizzesSalvos[quizzesSalvos.length - 1] > todosQuizzes[0]){
         document.querySelector(".perfil-sem-quizzes").classList.add("escondido");
         document.querySelector(".perfil-com-quizzes").classList.remove("escondido");
         return true;
@@ -35,6 +36,7 @@ function apagaQuizz(elemento) {
 }
 
 function verificaQuizz(num, numQuizzes) {
+
     const meusQuizzes = document.querySelector(".seus-quizzes ul");
     for(let i = 0; i < numQuizzes.length; i++) {
         if(numQuizzes[i] === todosQuizzes[num].id) {
