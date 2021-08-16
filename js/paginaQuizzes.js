@@ -197,6 +197,13 @@ function mostrarResultado(){
         }
     }
     const ul = document.querySelector(".pagina-quizz ul").lastElementChild;
+    const verificaBotao = document.querySelector(".pagina-quizz .reiniciar-quizz");
+    //verifica se o botao nao ja foi adicionado
+    if(verificaBotao === null){
+        paginaQuizz.innerHTML += `
+        <div class="reiniciar-quizz vermelho" onclick="reiniciarQuizz()">Reiniciar Quizz</div>
+        <div class="voltar-home" onclick="voltarHome()">Voltar para home</div>`;
+    }
     ul.innerHTML += `
     <li class="final-quizz-conteiner">
         <div class="final-quizz vermelho">
