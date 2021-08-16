@@ -11,6 +11,12 @@ let numNiveis;
 const perguntas = [];
 const niveis = [];
 
+function criaLocalStorage() {
+    if(localStorage.getItem("quizzes") === null) {
+    localStorage.setItem("quizzes", "[-1]");
+    }
+}
+criaLocalStorage();
 function adicionaInfosBasicas() {
     const dadosComeco = document.querySelectorAll('.criar-quizz-comeco li input');
     titulo = dadosComeco[0].value;
@@ -210,7 +216,7 @@ function enviaQuizz() {
 
 function salvaMeuQuizz(quizzSalvo) {
     const identificador = quizzSalvo.data.id;
-    if(localStorage.getItem("quizzes" === undefined)) {
+    if(localStorage.getItem("quizzes") === "[-1]") {
         const quizzSerializado = JSON.stringify(identificador);
         localStorage.setItem("quizzes", `[${quizzSerializado}]`);
     } else {

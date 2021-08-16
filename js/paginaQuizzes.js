@@ -2,7 +2,6 @@ let todosQuizzes = {};
 const paginaQuizz = document.querySelector(".pagina-quizz");
 
 
-
 // leitura de quizzes no servidor
 function buscarQuizzes(){
     const promessa = axios.get('https://mock-api.bootcamp.respondeai.com.br/api/v3/buzzquizz/quizzes');
@@ -14,21 +13,48 @@ function processarQuizzes(resposta){
     todosQuizzes = resposta.data;
     renderizarQuizzes();
 }
+function verificaSeTemQuizzes(){
+    const quizzesSalvos = localStorage.getItem("quizzes");
+    if(quizzesSalvos !== "[-1]"){
+        document.querySelector(".perfil-sem-quizzes").classList.add("escondido");
+        document.querySelector(".perfil-com-quizzes").classList.remove("escondido");
+        return true;
+    }
+    return false
+}
+
+function verificaQuizz(num, numQuizzes) {
+    const meusQuizzes = document.querySelector(".seus-quizzes ul");
+    for(let i = 0; i < numQuizzes.length; i++) {
+        if(numQuizzes[i] === todosQuizzes[num].id) {
+            meusQuizzes.innerHTML += `
+        <li onclick="abrirQuizz(this, ${todosQuizzes[num].id})">
+            <div class="degrade">
+                <span>${todosQuizzes[num].title}</span>
+            </div>
+        </li>`
+        }
+    }
+}
 
 function renderizarQuizzes(){
-    
+    let quiz;
+    const temQuizz = verificaSeTemQuizzes();
     const quizzes = document.querySelector(".todos-os-quizzes ul");
+    const listaMeusQuizzes = JSON.parse(localStorage.getItem("quizzes"));
     quizzes.innerHTML = '';
-    console.log(todosQuizzes);
     for(let i=0; i<todosQuizzes.length; i++){
-        quizzes.innerHTML += `
+        if(temQuizz) {
+            verificaQuizz(i, listaMeusQuizzes);
+        }
+            quizzes.innerHTML += `
         <li onclick="abrirQuizz(this, ${todosQuizzes[i].id})">
             <div class="degrade">
                 <span>${todosQuizzes[i].title}</span>
             </div>
         </li>`
+        quiz = quizzes.querySelector("li"); 
     }
-    let quiz = document.querySelector(".todos-os-quizzes ul li");
     for(let i=0; i<todosQuizzes.length; i++){
         quiz.style.backgroundImage = `url("${todosQuizzes[i].image}")`;
         quiz = quiz.nextElementSibling;
