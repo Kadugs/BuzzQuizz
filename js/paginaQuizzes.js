@@ -50,7 +50,7 @@ function renderizarQuizzes(){
             verificaQuizz(i, listaMeusQuizzes);
         }
             quizzes.innerHTML += `
-        <li onclick="abrirQuizz(this, ${todosQuizzes[i].id})">
+        <li onclick="abrirQuizz(${todosQuizzes[i].id})">
             <div class="degrade">
                 <span>${todosQuizzes[i].title}</span>
             </div>
