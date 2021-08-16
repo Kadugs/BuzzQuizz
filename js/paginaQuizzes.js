@@ -18,7 +18,8 @@ function processarQuizzes(resposta){
 function verificaSeTemQuizzes(){
     const quizzesSerializados = localStorage.getItem("quizzes");
     const quizzesSalvos = JSON.parse(quizzesSerializados);
-    if(quizzesSerializados !== "[-1]" || (quizzesSalvos[quizzesSalvos.length - 1] < todosQuizzes[0].id && quizzesSerializados !== "[-1]")){
+    console.log(todosQuizzes[todosQuizzes.length - 1].id);
+    if(quizzesSerializados !== "[-1]" || quizzesSalvos[quizzesSalvos.length - 1] < todosQuizzes[todosQuizzes.length - 1].id){
         document.querySelector(".perfil-sem-quizzes").classList.add("escondido");
         document.querySelector(".perfil-com-quizzes").classList.remove("escondido");
         return true;
