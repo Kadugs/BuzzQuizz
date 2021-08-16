@@ -25,12 +25,25 @@ function verificaSeTemQuizzes(){
     return false
 }
 
+function apagaQuizz(elemento) {
+    axios.remove(URL_QUIZZES +  "/" + elemento, {
+        headers: {
+            "secret-key": elemento,
+    }
+    });
+    window.location.reload()
+}
+
 function verificaQuizz(num, numQuizzes) {
     const meusQuizzes = document.querySelector(".seus-quizzes ul");
     for(let i = 0; i < numQuizzes.length; i++) {
         if(numQuizzes[i] === todosQuizzes[num].id) {
+            console.log(numQuizzes[i]);
             meusQuizzes.innerHTML += `
-        <li onclick="abrirQuizz(${todosQuizzes[num].id})">
+        <li onclick="abrirQuizz(${todosQuizzes[num].id})" style="background-image:url(${todosQuizzes[num].image});">
+            <div class="opcoes-edicao-quizz">
+                <ion-icon name="trash-outline" class="deleta-quizzes" onclick="apagaQuizz(${numQuizzes[i]});"></ion-icon>
+            </div>
             <div class="degrade">
                 <span>${todosQuizzes[num].title}</span>
             </div>
@@ -40,7 +53,6 @@ function verificaQuizz(num, numQuizzes) {
 }
 
 function renderizarQuizzes(){
-    let quiz;
     const temQuizz = verificaSeTemQuizzes();
     const quizzes = document.querySelector(".todos-os-quizzes ul");
     const listaMeusQuizzes = JSON.parse(localStorage.getItem("quizzes"));
@@ -50,16 +62,11 @@ function renderizarQuizzes(){
             verificaQuizz(i, listaMeusQuizzes);
         }
             quizzes.innerHTML += `
-        <li onclick="abrirQuizz(${todosQuizzes[i].id})">
+        <li onclick="abrirQuizz(${todosQuizzes[i].id})" style="background-image:url(${todosQuizzes[i].image});">
             <div class="degrade">
                 <span>${todosQuizzes[i].title}</span>
             </div>
         </li>`
-        quiz = quizzes.querySelector("li"); 
-    }
-    for(let i=0; i<todosQuizzes.length; i++){
-        quiz.style.backgroundImage = `url("${todosQuizzes[i].image}")`;
-        quiz = quiz.nextElementSibling;
     }
 }
 

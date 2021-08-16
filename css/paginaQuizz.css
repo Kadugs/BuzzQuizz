@@ -18,7 +18,7 @@
 }
 .topo-quizz p{
     z-index: 2;
-    word-wrap: break-word;
+    word-break: break-all;
 }
 .fundo{
     position: absolute;
