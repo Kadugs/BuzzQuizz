@@ -246,5 +246,5 @@ function abrirQuizzCriado(item) {
     const meusQuizzesSalvos = JSON.parse(localStorage.getItem("quizzes"));
     telaCriarFinal.classList.add("escondido");
     let valor = meusQuizzesSalvos.length - 1;
-    abrirQuizz(item, meusQuizzesSalvos[valor]);
+    abrirQuizz(meusQuizzesSalvos[valor]);
 }

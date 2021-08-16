@@ -30,7 +30,7 @@ function verificaQuizz(num, numQuizzes) {
     for(let i = 0; i < numQuizzes.length; i++) {
         if(numQuizzes[i] === todosQuizzes[num].id) {
             meusQuizzes.innerHTML += `
-        <li onclick="abrirQuizz(this, ${todosQuizzes[num].id})">
+        <li onclick="abrirQuizz(${todosQuizzes[num].id})">
             <div class="degrade">
                 <span>${todosQuizzes[num].title}</span>
             </div>
@@ -67,7 +67,7 @@ let quizzEspecifico = {};
 
 // abre a paginaQuizz com o quizz selecionado respectivo
 
-function abrirQuizz(elemento, idQuizz){
+function abrirQuizz(idQuizz){
    
     listaQuizzes.classList.add("escondido");
     
