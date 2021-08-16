@@ -78,19 +78,33 @@ function adicionaInfosFinais() {
     telaCriarFinal.querySelector(".img-quizz-criado span").innerHTML = titulo;
 }
 
-function isPerguntasOk(p) {
-    if(p.title.length < 20 || p.color.indexOf("#") !== 0 || p.answers[0].text === "" || p.answers[1].text === "" || 
+function eCorHexadecimal(cor) {
+    let soCor = cor.substring(1, 7);
+        console.log(soCor);
+        if(cor.length === 7 && !isNaN(Number('0x' + soCor))) {
+            return true;
+        }
+        return false;
+  }
+
+function saoPerguntasValidas(p) {
+    if(p.title.length < 20 || p.color.indexOf("#") !== 0 || !eCorHexadecimal(p.color) || p.answers[0].text === "" || p.answers[1].text === "" || 
     p.answers[0].image.indexOf("https://") === -1 || p.answers[1].image.indexOf("https://") === -1) {
         return true;
     } else {
         return false;
     }
 }
-function isNiveisOk(n) {
-    if(n.title < 10 || n.minValue < 0 || n.minValue > 100 || n.image.indexOf ("https://") === -1) {
+function saoNiveisValidos(n) {
+    if(n.title.length < 10 || n.minValue < 0 || n.minValue > 100 || n.image.indexOf ("https://") === -1 || n.text.length < 30) {
         return true;
     } else {
-        return false;
+        for(let i = 0; i < niveis.length; i++) {
+            if(niveis[i].minValue === 0) {
+                return false;
+            }    
+        }
+        return true;
     }
 }
 
@@ -102,7 +116,7 @@ function criarQuizzPerguntas() {
     adicionaInfosBasicas();
     adicionaInfosFinais();
     if(titulo.length < 20 || titulo.length > 65 || urlImagem.indexOf("https://") === -1 || numPerguntas < 3 || numNiveis < 2) {
-        alert('Erro, verifique os dados preenchidos');
+        alert('Erro, preencha os dados novamente!');
     } else {
         telaCriarComeco.classList.add('escondido');
         telaCriarPerguntas.classList.remove("escondido");
@@ -114,8 +128,8 @@ function criarQuizzNiveis() {
     adicionaInfosPerguntas();
 
     for(let i = 0; i < numPerguntas; i++) {
-        if(isPerguntasOk(perguntas[i])){
-            alert('Erro, verifique os dados preenchidos');
+        if(saoPerguntasValidas(perguntas[i])){
+            alert('Erro, preencha os dados novamente!');
             return;
         }
     }
@@ -127,8 +141,8 @@ function criarQuizzFinal() {
     adicionaInfosNiveis();
 
     for(let i = 0; i < numNiveis; i++) {
-        if(isNiveisOk(niveis[i])) {
-            alert('Erro, verifique os dados preenchidos');
+        if(saoNiveisValidos(niveis[i])) {
+            alert('Erro, preencha os dados novamente!');
             return;
         }
     }
